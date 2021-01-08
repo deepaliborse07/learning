@@ -1,0 +1,42 @@
+package multiplethreads;
+
+import java.util.Random;
+
+public class Main1 {
+	
+	public static class BusinessLogic extends Thread{
+		private Metrics metrics;
+		private Random random=new Random();
+		
+		public BusinessLogic(Metrics metrics) {
+			
+			this.metrics = metrics;
+		}
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			long start=System.currentTimeMillis();
+			
+			Thread.sleep(random.nextInt(10));
+		}
+		
+	}
+
+ public static class Metrics{
+	 
+	 private long count=0;
+	 private volatile double average=0.0;
+	 
+	 public synchronized void addSample(long sample) {
+		 double currentSum=average*count;
+		 count++;
+		 average=(currentSum+sample)/count;
+	 }
+	 
+	 public double getAverage() {
+		 return average;
+	 }
+ }
+
+}

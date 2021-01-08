@@ -1,0 +1,28 @@
+package multiplethreads;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	private static class InventoryCounter{
+		
+		private int items=0;
+		
+		public void increment() {
+			items++;
+		}
+		
+		public void decrement() {
+			items--;
+		}
+		
+		public int getItems() {
+			return items;
+			
+		}
+	}
+
+}
